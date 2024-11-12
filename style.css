@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  background-color: #333333;
+}
+header{
+  text-align: center;
+  justify-content: center;
+}
+
+.nav {
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 0 20px;
+  border-radius: 0 0 20px 20px;
+
+}
+
+.nav-item {
+  color: #83818c;
+  padding: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+  margin: 0 6px;
+  z-index: 1;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  position: relative;
+}
+.nav-item:before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #dfe2ea;
+  border-radius: 8px 8px 0 0;
+  opacity: 0;
+  transition: 0.3s;
+}
+.nav-item:nth-child(1):before ~ .nav{
+  box-shadow: 0 10px 40px rgba(216, 95, 202, 0.8);
+}
+.nav-item:nth-child(2):before ~ .nav{
+  box-shadow: 0 10px 40px rgba(95, 216, 121, 0.8);
+}
+
+.nav-item:nth-child(1):before {
+  background-color: orange;
+}
+
+.nav-item:nth-child(2):before {
+  background-color: green;
+}
+
+.nav-item:nth-child(3):before {
+  background-color: blue;
+}
+
+.nav-item:nth-child(4):before {
+  background-color: red;
+}
+
+.nav-item:nth-child(5):before {
+  background-color: rebeccapurple;
+}
+
+
+.nav-item:not(.is-active):hover:before {
+  opacity: 1;
+  bottom: 0;
+  background-color: #dfe2ea;
+}
+
+.nav-item:not(.is-active):hover {
+  color: #ff0000;
+}
+
+.nav-item.is-active:before {
+  opacity: 1;
+  bottom: 0;
+}
+
+
+.nav-indicator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  transition: 0.4s;
+  height: 5px;
+  z-index: 1;
+  border-radius: 8px 8px 0 0;
+}
+
+@media (max-width: 680px) {
+  .nav-indicator{
+    display: none;
+  }
+  header{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .nav {
+    text-align: center;
+    flex-direction: column;
+    border-radius: 0 20px 20px 0;
+  }
+}
