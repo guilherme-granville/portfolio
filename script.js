@@ -1,6 +1,5 @@
 const indicator = document.querySelector('.nav-indicator');
 const items = document.querySelectorAll('.nav-item');
-const nav = document.querySelector('.nav');
 
 function handleIndicator(el) {
   items.forEach(item => {
@@ -10,23 +9,14 @@ function handleIndicator(el) {
 
   indicator.style.width = `${el.offsetWidth}px`;
   indicator.style.left = `${el.offsetLeft}px`;
+  indicator.style.backgroundColor = el.getAttribute('active-color');
 
-  const activeColor = el.getAttribute('active-color');
-  indicator.style.backgroundColor = activeColor;
-
-  // Marca o item como ativo
   el.classList.add('is-active');
-  el.style.color = activeColor;
-
-  nav.style.boxShadow = `0 2px 20px ${activeColor}`; 
+  el.style.color = el.getAttribute('active-color');
 }
 
-items.forEach((item, index) => {
-  item.addEventListener('click', e => {
-    handleIndicator(e.target);
-  });
 
-  if (item.classList.contains('is-active')) {
-    handleIndicator(item);
-  }
+items.forEach((item, index) => {
+  item.addEventListener('click', e => {handleIndicator(e.target);});
+  item.classList.contains('is-active') && handleIndicator(item);
 });

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -8,9 +9,15 @@ body {
   width: 100%;
   background-color: #333333;
 }
-header{
-  text-align: center;
+
+header {
+  color: #00ff00, #00ff9d, #000000;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .nav {
@@ -21,7 +28,6 @@ header{
   background-color: #fff;
   padding: 0 20px;
   border-radius: 0 0 20px 20px;
-
 }
 
 .nav-item {
@@ -35,6 +41,7 @@ header{
   font-weight: 500;
   position: relative;
 }
+
 .nav-item:before {
   content: "";
   position: absolute;
@@ -46,12 +53,6 @@ header{
   border-radius: 8px 8px 0 0;
   opacity: 0;
   transition: 0.3s;
-}
-.nav-item:nth-child(1):before ~ .nav{
-  box-shadow: 0 10px 40px rgba(216, 95, 202, 0.8);
-}
-.nav-item:nth-child(2):before ~ .nav{
-  box-shadow: 0 10px 40px rgba(95, 216, 121, 0.8);
 }
 
 .nav-item:nth-child(1):before {
@@ -74,7 +75,6 @@ header{
   background-color: rebeccapurple;
 }
 
-
 .nav-item:not(.is-active):hover:before {
   opacity: 1;
   bottom: 0;
@@ -82,14 +82,13 @@ header{
 }
 
 .nav-item:not(.is-active):hover {
-  color: #ff0000;
+  color: #353535;
 }
 
 .nav-item.is-active:before {
   opacity: 1;
   bottom: 0;
 }
-
 
 .nav-indicator {
   position: absolute;
@@ -102,22 +101,137 @@ header{
   border-radius: 8px 8px 0 0;
 }
 
-@media (max-width: 680px) {
-  .nav-indicator{
+.curved-corner {
+  width: 45px;
+  height: 45px;
+  overflow: hidden;
+  position: relative;
+}
+
+.curved-corner:before {
+  content: "";
+  display: block;
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  border-radius: 25px;
+}
+
+#curved-corner-topright:before {
+  top: 0;
+  left: 0;
+  box-shadow: -50px -50px 0 0 rgb(255, 255, 255);
+}
+
+#curved-corner-topleft:before {
+  top: 0;
+  right: 0;
+  box-shadow: 50px -50px 0 0 rgb(255, 255, 255);
+}
+
+@media (max-width: 820px) {
+  .nav-indicator, .curved-corner {
     display: none;
   }
-  header{
+  
+  header {
+    width: auto;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     text-align: left;
     align-items: center;
     justify-content: center;
-
   }
+
   .nav {
     text-align: center;
     flex-direction: column;
     border-radius: 0 20px 20px 0;
+    padding: 5px;
   }
+
+  .nav-item {
+    /* Esconde o texto */
+    text-indent: -9999px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 30px; /* Ajuste conforme o tamanho do SVG */
+    height: 30px; /* Ajuste conforme o tamanho do SVG */
+  }
+
+  .nav-item.is-active {
+    transform: scale(1.5);
+  }
+
+  .nav-item:before, .nav-item:after {
+    display: none;
+  }
+  
+  .nav-item:nth-child(1) {
+    background-image: url('imgs/house.svg');
+  }
+  .nav-item:nth-child(1):hover {
+    background-image: url('imgs/house-fill.svg');
+    transform: scale(1.5);
+  }
+  .nav-item.is-active:nth-child(1) {
+    background-image: url('imgs/house-fill.svg');
+  }
+
+  .nav-item:nth-child(2) {
+    background-image: url('imgs/info-circle.svg');
+  }
+  .nav-item:nth-child(2):hover {
+    background-image: url('imgs/info-circle-fill.svg');
+    transform: scale(1.5);
+  }
+  .nav-item.is-active:nth-child(2) {
+    background-image: url('imgs/info-circle-fill.svg');
+  }
+
+
+  .nav-item:nth-child(3) {
+    background-image: url('imgs/file-earmark-code.svg');
+  }
+  .nav-item:nth-child(3):hover {
+    background-image: url('imgs/file-earmark-code-fill.svg');
+    transform: scale(1.5);
+  }
+  .nav-item.is-active:nth-child(3) {
+    background-image: url('imgs/file-earmark-code-fill.svg');
+  }
+
+  .nav-item:nth-child(4) {
+    background-image: url('imgs/stickies.svg');
+  }
+  .nav-item:nth-child(4):hover {
+    background-image: url('imgs/stickies-fill.svg');
+    transform: scale(1.5);
+  }
+  .nav-item.is-active:nth-child(4) {
+    background-image: url('imgs/stickies-fill.svg');
+  }
+
+  .nav-item:nth-child(5) {
+    background-image: url('imgs/link-45deg.svg');
+    transform: scale(1.5);
+  }
+  .nav-item:nth-child(5):hover {
+    background-image: url('imgs/link-45deg.svg');
+    transform: scale(2);
+  }
+  .nav-item.is-active:nth-child(5) {
+    background-image: url('imgs/link-45deg.svg');
+    transform: scale(2);
+  }
+}
+
+
+
+section {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
 }
